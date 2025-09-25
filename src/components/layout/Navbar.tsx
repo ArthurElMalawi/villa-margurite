@@ -4,8 +4,8 @@ import styles from "./Navbar.module.scss";
 const sections = ["btn1", "Secondbtn", "Bouton3"]
 
 function Navbar () {
-    const listItems = sections.map((section) =>
-        <li>{section}</li>
+    const listItems = sections.map((section, index) =>
+        <li key={index}>{section}</li>
     );
 
   return (
