@@ -100,13 +100,15 @@
 /* Desktop / large screens */
 @media (min-width: 851px) {
   .navbar {
-    display: flex;
+      display: flex;
       width: max-content;
       border-radius: 15px;
       margin: 30px auto;
       left: 50%;
       transform: translateX(-50%);
       background: #e3e1e124;
+      top: unset;
+      bottom: 0;
     
     .cross {
       display: none; /* hide burger on desktop */
