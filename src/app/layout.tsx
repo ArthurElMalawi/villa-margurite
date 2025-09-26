@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, MonteCarlo } from "next/font/google";
 import "./globals.scss";
 import Navbar from "@/components/layout/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const poppins = Poppins({
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"], // choisis les graisses utiles
+  variable: "--font-poppins", // permet d'utiliser en CSS
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dancingScript = MonteCarlo({
   subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-dancing",
 });
 
 export const metadata: Metadata = {
@@ -24,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="fr">
+      <body className={`${poppins.variable} ${dancingScript.variable}`}>
         <Navbar />
         {children}
       </body>
