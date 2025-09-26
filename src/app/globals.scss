@@ -44,3 +44,20 @@ a {
     color-scheme: dark;
   }
 }
+
+.section {
+  height: 100vh;
+
+  &.background-purple {
+    background-color: #FFEAE477;
+
+  }
+
+  &.background-yellow {
+    background-color: #ffe7c577;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}
