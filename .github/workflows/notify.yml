@@ -19,6 +19,6 @@ jobs:
             -d "
             Yo 👋
             Le site Villa Marguerite a été mis à jour avec succès ✅  
-            Update ${{ github.event.head_commit.message }}
+            Update : ${{ github.event.head_commit.message }}
             👉 Consultez-le ici : https://villa-marguerite.vercel.app/" \
             https://ntfy.sh/villa-marguerite
