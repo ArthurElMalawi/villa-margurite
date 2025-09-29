@@ -12,4 +12,4 @@ jobs:
         env:
             AUTH: ${{ secrets.NTFY_AUTH }}
         run: |
-          curl -u "$AUTH" \ -d "Nouvelle mise à jour du site Villa Marguerite ! Message d'ajout : ${{ github.event.head_commit.message }}, Rendez-vous sur le site : https://villa-margurite.vercel.app/" https://ntfy.sh/villa-marguerite
+          curl -u "$AUTH" -d "Nouvelle mise à jour du site Villa Marguerite ! Message d'ajout : ${{ github.event.head_commit.message }}, Rendez-vous sur le site : https://villa-margurite.vercel.app/" https://ntfy.sh/villa-marguerite
