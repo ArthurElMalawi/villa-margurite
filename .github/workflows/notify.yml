@@ -16,8 +16,8 @@ jobs:
             -H "Title: 🚀 Mise à jour Villa Marguerite" \
             -H "Priority: high" \
             -H "Tags: house,rocket" \
-            -d "Bonjour 👋
+            -d "Yo 👋
 
             Le site Villa Marguerite a été mis à jour avec succès ✅  
-            👉 Consultez-le ici : https://villa-marguerite.vercel.app/" \
+            👉 Consultez-le ici : https://villa-margurite.vercel.app/" \
             https://ntfy.sh/villa-marguerite
