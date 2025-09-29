@@ -15,15 +15,6 @@
   gap: 64px;
   font-family: var(--font-geist-sans);
 
-  @media (prefers-color-scheme: dark) {
-    --gray-rgb: 255, 255, 255;
-    --gray-alpha-200: rgba(var(--gray-rgb), 0.145);
-    --gray-alpha-100: rgba(var(--gray-rgb), 0.06);
-
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-  }
-
   @media (max-width: 600px) {
     padding: 32px;
     padding-bottom: 80px;
@@ -153,11 +144,5 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-  }
-}
-
-.logo {
-  @media (prefers-color-scheme: dark) {
-    filter: invert(1);
   }
 }

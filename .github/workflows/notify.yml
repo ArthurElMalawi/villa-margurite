@@ -13,11 +13,12 @@ jobs:
           AUTH: ${{ secrets.NTFY_AUTH }}
         run: |
           curl -u "$AUTH" \
-            -H "Title: 🚀 Mise à jour Villa Marguerite" \
+            -H "Title: Mise à jour Villa Marguerite" \
             -H "Priority: high" \
-            -H "Tags: house,rocket" \
-            -d "Yo 👋
-
+            -H "Tags: house" \
+            -d "
+            Yo 👋
             Le site Villa Marguerite a été mis à jour avec succès ✅  
-            👉 Consultez-le ici : https://villa-margurite.vercel.app/" \
+            # ${{ github.event.head_commit.message }} #
+            👉 Consultez-le ici : https://villa-marguerite.vercel.app/" \
             https://ntfy.sh/villa-marguerite
