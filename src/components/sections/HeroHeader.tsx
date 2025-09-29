@@ -1,18 +1,22 @@
 import React from "react";
 import styles from "./HeroHeader.module.scss";
+import Image from "next/image";
 
 function HeroHeader() {
-    const imgUrl = "https://picsum.photos/1500/1000"
-
-    return (
-        <section className={styles.heroHeader}>
-            <div>
-                <h1>This is a title</h1>
-                <h4>This is a subtitle</h4>
-            </div>
-            <img src={imgUrl} alt="hero header image" />
-        </section>
-    );
+  return (
+    <section id="hero" className={styles.heroHeader}>
+      <div>
+        <h1>Bien dormir pour réussir</h1>
+        <h3>24 rue Victor Hugo, 95300 Pontoise, France</h3>
+      </div>
+      <Image
+        src="/assets/commons/livingroom/salon.jpeg"
+        alt="hero header image"
+        width={1920}
+        height={1080}
+      />
+    </section>
+  );
 }
 
-export default HeroHeader
+export default HeroHeader;

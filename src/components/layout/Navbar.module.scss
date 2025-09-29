@@ -80,12 +80,10 @@
 
       /* Active link (current section) */
       .linkActive {
-        color: #0070f3;
         font-weight: 600;
 
         &::after {
           transform: scaleX(1);
-          background: #0070f3;
         }
       }
     }
@@ -100,16 +98,16 @@
 /* Desktop / large screens */
 @media (min-width: 851px) {
   .navbar {
-      display: flex;
-      width: max-content;
-      border-radius: 15px;
-      margin: 30px auto;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #e3e1e124;
-      top: unset;
-      bottom: 0;
-    
+    display: flex;
+    width: max-content;
+    border-radius: 15px;
+    margin: 30px auto;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #00000060;
+    top: unset;
+    bottom: 0;
+
     .cross {
       display: none; /* hide burger on desktop */
     }
@@ -124,7 +122,7 @@
       background: transparent;
       border-radius: 0;
 
-      transform: none;      /* always visible */
+      transform: none; /* always visible */
       transition: none;
 
       display: flex;

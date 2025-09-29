@@ -14,54 +14,55 @@ const sections = [
   { anchor: "contact", title: "Contact" },
 ];
 
-function Navbar () {
-    const [active, setActive] = useState("");
-    const [open, setOpen] = useState(false);
+function Navbar() {
+  const [active, setActive] = useState("");
+  const [open, setOpen] = useState(false);
 
-    const openMenu = () => {
-        setOpen(!open);
-    };
+  const openMenu = () => {
+    setOpen(!open);
+  };
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-        (entries) => {
-            entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                setActive(entry.target.id);
-            }
-            });
-        },
-        { threshold: 0.6 }
-        );
-
-        sections.forEach((s) => {
-            const el = document.getElementById(s.anchor);
-            if (el) observer.observe(el);
+  useEffect(() => {
+    const ids = ["hero", ...sections.map((s) => s.anchor)];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id);
+          }
         });
+      },
+      { threshold: 0.6 }
+    );
 
-        return () => observer.disconnect();
-    }, []);
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
 
- return (
-  <nav className={styles.navbar} aria-label="Navigation principale">
-    <div className={styles.cross} onClick={openMenu}>
-      <FontAwesomeIcon icon={open ? faTimes : faBars} />
-    </div>
+    return () => observer.disconnect();
+  }, []);
 
-    <ul className={`${styles.menu} ${open ? styles.menuOpen : ""}`}>
-      {sections.map((section) => (
-        <li key={section.anchor}>
-          <a
-            href={`#${section.anchor}`}
-            className={active === section.anchor ? styles.linkActive : ""}
-          >
-            {section.title}
-          </a>
-        </li>
-      ))}
-    </ul>
-  </nav>
+  return (
+    <nav className={styles.navbar} aria-label="Navigation principale">
+      <div className={styles.cross} onClick={openMenu}>
+        <FontAwesomeIcon icon={open ? faTimes : faBars} />
+      </div>
+
+      <ul className={`${styles.menu} ${open ? styles.menuOpen : ""}`}>
+        {sections.map((section) => (
+          <li key={section.anchor}>
+            <a
+              href={`#${section.anchor}`}
+              className={active === section.anchor ? styles.linkActive : ""}
+            >
+              {section.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
-};
+}
 
 export default Navbar;
