@@ -8,23 +8,15 @@
         align-items: center;
         gap: 25px;
 
-        @media screen and (min-width: $medium-screen-breakpoint) {
-            flex-direction: row;
-            align-items: start;
-        }
-
-        @media screen and (min-width: $medium-screen-breakpoint) {
+        @media screen and (min-width: $large-screen-breakpoint) {
             flex-direction: row;
             align-items: center;
         }
 
 
         p {
-            @media screen and (min-width: $medium-screen-breakpoint) {
+            @media screen and (min-width: $large-screen-breakpoint) {
                 max-width: 30%;
-            }
-
-            @media screen and (min-width: $medium-screen-breakpoint) {
                 line-height: 2;
             }
         }

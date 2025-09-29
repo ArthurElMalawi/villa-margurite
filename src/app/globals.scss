@@ -44,6 +44,7 @@ h3,
 
 .section {
   height: 100vh;
+  min-height: max-content;
   padding: 20px;
 
   @media screen and (min-width: $medium-screen-breakpoint) {
