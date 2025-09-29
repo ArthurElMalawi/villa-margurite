@@ -12,7 +12,8 @@ jobs:
         env:
           AUTH: ${{ secrets.NTFY_AUTH }}
         run: |
-          curl -u ":tk_gr92hj0xknad85rtye7rkfbwc95jq" \
-            -d "Nouvelle mise à jour du site Villa Marguerite ! Message d'ajout : ${{ github.event.head_commit.message }} 
+          curl -u "$AUTH" \
+            -d "Nouvelle mise à jour du site Villa Marguerite !
+            Message d'ajout : ${{ github.event.head_commit.message }}
             Rendez-vous sur le site : https://villa-marguerite.vercel.app/" \
             https://ntfy.sh/villa-marguerite
