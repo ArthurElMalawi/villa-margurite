@@ -1,0 +1,13 @@
+@use "../../app/var.scss" as *;
+
+.livingroom {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        @media screen and (min-width: $medium-screen-breakpoint) {
+            flex-direction: row;
+        }
+    }
+}

@@ -1,3 +1,5 @@
+@use "../../app/var.scss" as *;
+
 .heroHeader {
   height: 100vh;
   position: relative;
@@ -15,11 +17,11 @@
     font-size: 50px;
     line-height: 0.8;
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: $medium-screen-breakpoint) {
       font-size: 70px;
     }
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: $large-screen-breakpoint) {
       font-size: 100px;
     }
   }
@@ -27,11 +29,11 @@
   h3 {
     font-size: 16px;
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: $medium-screen-breakpoint) {
       font-size: 24px;
     }
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: $large-screen-breakpoint) {
       font-size: 30px;
     }
   }

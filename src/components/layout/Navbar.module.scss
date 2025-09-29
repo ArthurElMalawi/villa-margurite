@@ -1,3 +1,5 @@
+@use "../../app/var.scss" as *;
+
 .navbar {
   display: none;
   position: fixed;
@@ -96,7 +98,7 @@
 }
 
 /* Desktop / large screens */
-@media (min-width: 851px) {
+@media (min-width: $medium-screen-breakpoint) {
   .navbar {
     display: flex;
     width: max-content;
