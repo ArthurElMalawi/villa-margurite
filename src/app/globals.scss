@@ -44,7 +44,11 @@ h3,
 
 .section {
   height: 100vh;
-  padding: 50px;
+  padding: 20px;
+
+  @media screen and (min-width: $medium-screen-breakpoint) {
+    padding: 50px;
+  }
 
   &:nth-child(n) {
     background-color: #ffeae477;
@@ -56,7 +60,7 @@ h3,
 
   h2 {
     text-align: center;
-    padding: 0 50px;
+    padding: 0 50px 50px;
     font-size: 32px;
 
     @media screen and (min-width: $medium-screen-breakpoint) {
