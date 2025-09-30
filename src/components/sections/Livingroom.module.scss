@@ -1,0 +1,24 @@
+@use "../../app/var.scss" as *;
+
+.livingroom {
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+
+        @media screen and (min-width: $large-screen-breakpoint) {
+            flex-direction: row;
+            align-items: center;
+        }
+
+
+        p {
+            @media screen and (min-width: $large-screen-breakpoint) {
+                max-width: 30%;
+                line-height: 2;
+            }
+        }
+    }
+}

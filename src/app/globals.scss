@@ -1,3 +1,5 @@
+@use "var.scss" as *;
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -42,6 +44,12 @@ h3,
 
 .section {
   height: 100vh;
+  min-height: max-content;
+  padding: 20px;
+
+  @media screen and (min-width: $medium-screen-breakpoint) {
+    padding: 50px;
+  }
 
   &:nth-child(n) {
     background-color: #ffeae477;
@@ -53,14 +61,14 @@ h3,
 
   h2 {
     text-align: center;
-    padding: 50px;
+    padding: 0 50px 50px;
     font-size: 32px;
 
-    @media screen and (min-width: 600px) {
+    @media screen and (min-width: $medium-screen-breakpoint) {
       font-size: 42px;
     }
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: $large-screen-breakpoint) {
       font-size: 64px;
     }
   }
