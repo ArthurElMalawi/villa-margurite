@@ -4,7 +4,7 @@ import Image from "next/image";
 import Carousel from "../utils/Carousel";
 
 function Livingroom() {
-  let imgs = []
+  const imgs = []
 
   for(let i=1; i <= 8; i ++){
     imgs.push("salon-"+ i);
