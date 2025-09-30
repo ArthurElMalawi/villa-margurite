@@ -16,7 +16,12 @@ function Livingroom() {
     <section id="livingroom" className={`section ${styles.livingroom}`}>
       <h2>Le salon</h2>
       <div className={styles.container}>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis varius pharetra ex. Fusce vel mi ac dui molestie sodales. Praesent viverra convallis libero, vitae tempor purus congue vehicula. Morbi vehicula pretium porttitor. Ut malesuada vulputate nunc, in volutpat orci pulvinar sed. Nam hendrerit risus nec tincidunt convallis. Suspendisse facilisis luctus vehicula. Aenean ac justo dignissim, imperdiet ex rhoncus, tempus nisi. Nullam efficitur interdum ante, sollicitudin suscipit orci tempor quis. Sed a dui sed velit dapibus consequat ut imperdiet enim. Suspendisse vestibulum nibh at sagittis imperdiet. Quisque interdum lobortis pellentesque. Cras ultrices, urna sit amet malesuada tincidunt, augue nunc porttitor mauris, vitae sollicitudin velit justo fringilla dui.</p>
+        <p>
+          Le salon de la résidence est un espace lumineux et accueillant, ouvert sur le jardin grâce à ses grandes baies vitrées. Ses canapés confortables, ses tables basses et ses plantes en font un lieu idéal pour se détendre, travailler ou partager un moment convivial entre colocataires.
+          <br/>
+          <br/>
+          Avec son parquet en bois, ses moulures élégantes et sa décoration moderne, ce grand salon allie charme de l’ancien et confort contemporain. Véritable cœur de la maison, il invite chacun à s’y sentir rapidement chez soi.
+        </p>
         <Carousel carouselItems={ 
           imgs.map((img) => (
               <Image
