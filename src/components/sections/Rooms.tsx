@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./Rooms.module.scss";
 
 function Rooms() {
   return (
