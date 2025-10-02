@@ -62,10 +62,10 @@ h3,
   h2 {
     text-align: center;
     padding: 0 50px 50px;
-    font-size: 32px;
-
-    @media screen and (min-width: $medium-screen-breakpoint) {
-      font-size: 42px;
+    font-size: 50px;
+    
+    @media screen and (min-width: $large-screen-breakpoint) {
+      font-size: 55px;
     }
 
     @media screen and (min-width: $large-screen-breakpoint) {
