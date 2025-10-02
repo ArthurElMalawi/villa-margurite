@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./HeroHeader.module.scss";
 import Image from "next/image";
 
-function HeroHeader() {
+export default function HeroHeader() {
   return (
     <section id="hero" className={styles.heroHeader}>
       <div>
@@ -18,5 +18,3 @@ function HeroHeader() {
     </section>
   );
 }
-
-export default HeroHeader;
