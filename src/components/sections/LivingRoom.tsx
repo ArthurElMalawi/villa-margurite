@@ -1,16 +1,14 @@
 import React from "react";
-import styles from "./Livingroom.module.scss";
+import styles from "./LivingRoom.module.scss";
 import Image from "next/image";
-import Carousel from "../utils/Carousel";
+import Carousel from "@/components/utils/Carousel";
 
-function Livingroom() {
+export default function LivingRoom() {
   const imgs = []
 
   for(let i=1; i <= 8; i ++){
     imgs.push("salon-"+ i);
   }
-
-  console.log(imgs)
 
   return (
     <section id="livingroom" className={`section ${styles.livingroom}`}>
@@ -37,5 +35,3 @@ function Livingroom() {
     </section>
   );
 }
-
-export default Livingroom;

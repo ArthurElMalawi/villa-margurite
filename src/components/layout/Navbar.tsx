@@ -14,7 +14,7 @@ const sections = [
   { anchor: "contact", title: "Contact" },
 ];
 
-function Navbar() {
+export default function Navbar() {
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -64,5 +64,3 @@ function Navbar() {
     </nav>
   );
 }
-
-export default Navbar;
