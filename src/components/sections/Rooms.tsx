@@ -23,7 +23,6 @@ export default function Rooms() {
                 height={360}
                 loading="lazy"
                 decoding="async"
-                style={{ display: "block", width: "100%", height: "auto" }}
                 sizes="(max-width: 768px) 100vw, 640px"
               />
             </div>
