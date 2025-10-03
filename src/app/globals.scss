@@ -43,7 +43,7 @@ h3,
 }
 
 .section {
-  height: 100vh;
+  min-height: 100vh;
   min-height: max-content;
   padding: 20px;
 
@@ -63,7 +63,7 @@ h3,
     text-align: center;
     padding: 0 50px 50px;
     font-size: 50px;
-    
+
     @media screen and (min-width: $large-screen-breakpoint) {
       font-size: 55px;
     }
