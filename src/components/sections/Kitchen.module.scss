@@ -1,0 +1,103 @@
+@use "../../app/var.scss" as *;
+
+.kitchen {
+  .texts {
+    @media (min-width: $medium-screen-breakpoint) {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 25px;
+
+      p {
+        width: 60%;
+      }
+    }
+
+    @media (min-width: $large-screen-breakpoint) {
+      display: block;
+
+      p {
+        width: unset;
+      }
+    }
+
+    .equipments {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        color: #333;
+
+        .icon {
+          color: #f1bfbf;
+          font-size: 1.1rem;
+          min-width: 20px; /* aligne bien */
+        }
+      }
+    }
+  }
+
+  .images {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    justify-items: center;
+    align-items: center;
+    max-width: 90vw;
+
+    @media (min-width: $medium-screen-breakpoint) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 36px;
+      max-width: 80vw;
+    }
+
+    @media (min-width: $large-screen-breakpoint) {
+      max-width: 70vw;
+      gap: 3vw 4vw;
+    }
+
+    img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      transition: transform 0.25s ease;
+      display: block;
+      object-fit: cover;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+
+      @media (min-width: $large-screen-breakpoint) {
+        &:first-child {
+          width: 22vw;
+          height: auto;
+        }
+
+        &:nth-child(2) {
+          width: 28vw;
+          height: auto;
+        }
+
+        &:nth-child(3) {
+          width: 25vw;
+          height: auto;
+        }
+
+        &:nth-child(4) {
+          width: 20vw;
+          height: auto;
+        }
+
+        max-width: 600px;
+      }
+    }
+  }
+}

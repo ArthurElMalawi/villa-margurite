@@ -5,8 +5,8 @@ import Navbar from "@/components/layout/Navbar";
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"], // choisis les graisses utiles
-  variable: "--font-poppins", // permet d'utiliser en CSS
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-poppins",
 });
 
 const dancingScript = MonteCarlo({
