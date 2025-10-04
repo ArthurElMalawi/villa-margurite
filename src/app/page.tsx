@@ -1,12 +1,7 @@
 import HeroHeader from "../components/sections/HeroHeader";
 import Rooms from "../components/sections/Rooms";
 import LivingRoom from "../components/sections/LivingRoom";
-
-console.log("DEBUG components", {
-  HeroHeader: typeof HeroHeader,
-  LivingRoom: typeof LivingRoom,
-  Rooms: typeof Rooms,
-})
+import Kitchen from "@/components/sections/Kitchen";
 
 export default function Home() {
   return (
@@ -14,6 +9,7 @@ export default function Home() {
       <HeroHeader />
       <Rooms />
       <LivingRoom />
+      <Kitchen />
     </div>
   );
 }

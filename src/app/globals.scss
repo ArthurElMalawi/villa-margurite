@@ -76,4 +76,30 @@ h3,
   .title {
     font-size: 24px;
   }
+
+  .container-2-cols {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    @media screen and (min-width: $large-screen-breakpoint) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &.reverse {
+      @media screen and (min-width: $large-screen-breakpoint) {
+        flex-direction: row-reverse;
+      }
+    }
+
+    :first-child:has(p) {
+      @media screen and (min-width: $large-screen-breakpoint) {
+        max-width: 30%;
+        line-height: 2;
+      }
+    }
+  }
 }
