@@ -1,0 +1,64 @@
+@use "../../app/var.scss" as *;
+
+.bathrooms {
+  .options {
+    display: grid;
+    grid-template-columns: 1fr; // mobile : 1 colonne
+    gap: 1.5rem;
+    justify-items: center;
+    margin-bottom: 40px;
+
+    @media (min-width: $medium-screen-breakpoint) {
+      grid-template-columns: repeat(2, minmax(0, 1fr)); // desktop : 2 colonnes
+      gap: 2rem 2.5rem;
+    }
+
+    .option {
+      width: 100%;
+      max-width: 640px; // largeur max des images
+      display: grid;
+      gap: 0.5rem;
+      justify-items: center;
+
+      @media (min-width: $large-screen-breakpoint) {
+        max-width: 700px;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        height: auto;
+        border-radius: 10px;
+        display: block;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        transition: transform 0.25s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.02);
+      }
+
+      p {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1rem;
+        text-align: center;
+      }
+    }
+  }
+
+  .desc {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.7;
+    padding-inline: 1rem;
+
+    @media (min-width: $medium-screen-breakpoint) {
+      text-align: center;
+    }
+
+    @media (min-width: $large-screen-breakpoint) {
+        margin-bottom: 50px;
+    }
+  }
+}
