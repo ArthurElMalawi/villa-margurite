@@ -24,7 +24,6 @@ jobs:
             -H "Priority: high" \
             -H "Tags: house" \
             -d "
-            Yo 👋
             🚀 Nouveauté : ${{ github.event.head_commit.message }}
             📦 Version actuelle : $VERSION
             👉 Consultez-le ici : https://villa-marguerite.vercel.app/
