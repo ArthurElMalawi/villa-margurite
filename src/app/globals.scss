@@ -95,7 +95,7 @@ h3,
       }
     }
 
-    :first-child:has(p) {
+    >div:has(p) {
       @media screen and (min-width: $large-screen-breakpoint) {
         max-width: 30%;
         line-height: 2;
