@@ -1,0 +1,18 @@
+@use "../../app/var.scss" as *;
+
+.garden {
+  >div {
+    flex-direction: column-reverse !important;
+
+    @media screen and (min-width: $large-screen-breakpoint) {
+      flex-direction: row !important;
+    }
+
+    p {
+      @media screen and (min-width: $large-screen-breakpoint) {
+        text-align: right;
+        line-height: 2;
+      }
+    }
+  }
+}
