@@ -14,6 +14,7 @@ export default function HeroHeader() {
         alt="hero header image"
         width={1920}
         height={1080}
+        priority={true}
       />
     </section>
   );
