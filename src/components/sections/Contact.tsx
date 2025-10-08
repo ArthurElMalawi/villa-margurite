@@ -7,7 +7,7 @@ export default function Contact() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const email = "arthur.elmalawi@gmail.com"
+  const email = "veronique.malawi@gmail.com"
 
   const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -17,7 +17,7 @@ export default function Contact() {
     setResult("");
 
     const formData = new FormData(form);
-    formData.append("access_key", "8c7a1c1b-7143-4745-acf1-0f05ceae959c");
+    formData.append("access_key", "c670c3ea-0310-4df6-8fb7-8987-a5bf4cdd");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
