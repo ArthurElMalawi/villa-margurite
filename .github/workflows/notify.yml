@@ -23,9 +23,8 @@ jobs:
             -H "Title: Mise à jour Villa Marguerite" \
             -H "Priority: high" \
             -H "Tags: house" \
-            -d "
+            -d "📦 Version actuelle : $VERSION
             🚀 Nouveauté : ${{ github.event.head_commit.message }}
-            📦 Version actuelle : $VERSION
             👉 Consultez-le ici : https://villa-marguerite.vercel.app/
             " \
             https://ntfy.sh/villa-marguerite
