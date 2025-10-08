@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🏡 Villa Marguerite — Site vitrine de la résidence étudiante
 
-## Getting Started
+Bienvenue sur le dépôt du site Villa Marguerite, une colocation étudiante chaleureuse située à Pontoise.
+Ce projet présente les chambres, les espaces communs et les services proposés dans un environnement calme et verdoyant 🌿
 
-First, run the development server:
+## ✨ Aperçu du projet
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Ce site a été conçu pour offrir une visite virtuelle claire et élégante du logement.
+Il met en avant les différentes pièces de la maison (chambres, salon, cuisine, jardin…) à travers des sections illustrées, un carrousel d’images et un design responsive.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+👉 Le but : permettre aux futurs colocataires de découvrir la Villa avant même de la visiter.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Stack technique
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Next.js 15** — Framework principal (React + SSR)
+- **TypeScript** — Typage strict pour un code plus robuste
+- **SCSS Modules** — Gestion des styles par composant
+- **Font Awesome** — Icônes modernes et cohérentes
+- **Web3Forms API** — Formulaire de contact sans backend
+- **ntfy.sh** — Système de notification pour le suivi des déploiements 🚀
 
-## Learn More
+## 📢 Suivre les mises à jour avec NTFY
 
-To learn more about Next.js, take a look at the following resources:
+Chaque fois qu’une mise à jour est poussée sur la branche main, une notification est envoyée automatiquement grâce à GitHub Actions & ntfy.sh :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🚀 “Le site Villa Marguerite a été mis à jour avec succès !”
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+💡 Tu peux rejoindre le canal public ntfy pour suivre les prochaines versions et l’avancée du projet :
 
-## Deploy on Vercel
+📲 Lien du canal :
+👉 https://ntfy.sh/villa-marguerite
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Depuis ton smartphone ou ton navigateur, tu recevras les notifications en direct à chaque mise à jour !
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🧱 Fonctionnalités principales
+- 🎨 Design responsive pensé mobile-first
+- 🖼️ Carrousel d’images dynamique pour les pièces communes
+- 📩 Formulaire de contact fonctionnel via Web3Forms
+- 🏷️ Suivi de version automatique (le package.json s’incrémente à chaque merge sur main)
+- 🔔 Notifications de build via ntfy
+- 🧭 Navigation sticky avec surlignage automatique de la section active
+
+## 🚀 Déploiement
+
+Le site est déployé sur Vercel :
+🔗 https://villa-marguerite.vercel.app
+
+## 👨‍💻 Auteur
+
+Projet conçu et développé par Arthur El Malawi
+Front-end Developer • Passionné par le design web, React et les projets vivants 🌱
