@@ -5,6 +5,7 @@ import Kitchen from "@/components/sections/Kitchen";
 import Bathroom from "@/components/sections/Bathrooms";
 import Garden from "@/components/sections/Garden";
 import Contact from "@/components/sections/Contact";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Bathroom />
       <Garden />
       <Contact />
+      <Footer />
     </div>
   );
 }
