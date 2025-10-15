@@ -9,7 +9,7 @@ const sections = [
   { anchor: "rooms", title: "Les Chambres" },
   { anchor: "livingroom", title: "Le Salon" },
   { anchor: "kitchen", title: "La Cuisine" },
-  { anchor: "bathrooms", title: "Les Salles d'eau" },
+  { anchor: "bathrooms", title: "Les Salles de bain" },
   { anchor: "garden", title: "Le Jardin" },
   { anchor: "contact", title: "Contact" },
 ];

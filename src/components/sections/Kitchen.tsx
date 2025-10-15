@@ -1,6 +1,9 @@
 import React from "react";
 import styles from "./Kitchen.module.scss";
 import Image from "next/image";
+
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFireBurner,
@@ -12,9 +15,10 @@ import {
   faShirt,
 } from "@fortawesome/free-solid-svg-icons";
 
+config.autoAddCss = false;
+
 export default function Kitchen() {
   const imgs = [];
-
   const equipments = [
     { icon: faFireBurner, label: "Plaques de cuisson" },
     { icon: faClock, label: "Four & micro-ondes" },
@@ -24,6 +28,7 @@ export default function Kitchen() {
     { icon: faBreadSlice, label: "Grille-pain" },
     { icon: faShirt, label: "Lave-linge" },
   ];
+
   for (let i = 1; i <= 4; i++) {
     imgs.push("cuisine-" + i);
   }
@@ -57,6 +62,7 @@ export default function Kitchen() {
               alt={img}
               width={640}
               height={360}
+              loading="lazy"
             />
           ))}
         </div>
