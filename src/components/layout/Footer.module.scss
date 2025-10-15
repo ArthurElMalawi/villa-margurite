@@ -1,0 +1,68 @@
+.footer {
+  width: 100%;
+  border-top: 1px solid #e5e5e5;
+  background-color: #fff;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copy {
+  text-align: center;
+  span {
+    font-weight: 600;
+    color: #000;
+  }
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    color: #777;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: #000;
+    }
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+/* 🌙 Dark mode support (si tu veux l’utiliser plus tard) */
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: #111;
+    border-top: 1px solid #333;
+    color: #ccc;
+  }
+
+  .copy span {
+    color: #fff;
+  }
+
+  .socials a {
+    color: #aaa;
+    &:hover {
+      color: #fff;
+    }
+  }
+}
