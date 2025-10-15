@@ -47,7 +47,7 @@ h3,
   padding: 20px;
 
   @media screen and (min-width: $medium-screen-breakpoint) {
-    padding: 50px;
+    padding: 100px 50px 50px;
   }
 
   &:nth-child(n) {
@@ -94,7 +94,7 @@ h3,
       }
     }
 
-    >div:has(p) {
+    > div:has(p) {
       @media screen and (min-width: $large-screen-breakpoint) {
         max-width: 30%;
         line-height: 2;

@@ -17,34 +17,45 @@ const sections = [
 export default function Navbar() {
   const [active, setActive] = useState("");
   const [open, setOpen] = useState(false);
+  const [stuck, setStuck] = useState(false);
 
-  const openMenu = () => {
-    setOpen(!open);
-  };
+  const openMenu = () => setOpen((o) => !o);
 
   useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)"); // ← adapte à $medium-screen-breakpoint
+    if (!mq.matches) return; // mobile/tablette : on ne bascule pas
+
+    // highlight section (desktop – tu peux garder pour mobile si tu veux)
     const ids = ["hero", ...sections.map((s) => s.anchor)];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActive(entry.target.id);
-          }
-        });
-      },
+    const secObs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
       { threshold: 0.6 }
     );
-
     ids.forEach((id) => {
       const el = document.getElementById(id);
-      if (el) observer.observe(el);
+      if (el) secObs.observe(el);
     });
 
-    return () => observer.disconnect();
+    // sticky toggle: quand le hero sort totalement par le haut → stuck = true
+    const hero = document.getElementById("hero");
+    const stickyObs = new IntersectionObserver(
+      ([entry]) => setStuck(entry.boundingClientRect.bottom <= 0),
+      { threshold: 0 }
+    );
+    if (hero) stickyObs.observe(hero);
+
+    return () => {
+      secObs.disconnect();
+      stickyObs.disconnect();
+    };
   }, []);
 
   return (
-    <nav className={styles.navbar} aria-label="Navigation principale">
+    <nav
+      className={`${styles.navbar} ${stuck ? styles.stuck : styles.free}`}
+      aria-label="Navigation principale"
+    >
       <div className={styles.cross} onClick={openMenu}>
         <FontAwesomeIcon icon={open ? faTimes : faBars} />
       </div>
@@ -55,6 +66,7 @@ export default function Navbar() {
             <a
               href={`#${section.anchor}`}
               className={active === section.anchor ? styles.linkActive : ""}
+              onClick={() => setOpen(false)}
             >
               {section.title}
             </a>
