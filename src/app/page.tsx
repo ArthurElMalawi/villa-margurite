@@ -7,12 +7,15 @@ import Garden from "@/components/sections/Garden";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
+import styles from "../components/sections/HeroHeader.module.scss";
 
 export default function Home() {
   return (
     <div>
-      <HeroHeader />
-      <Navbar />
+      <section id="hero" className={styles.hero}>
+        <HeroHeader />
+        <Navbar />
+      </section>
       <Rooms />
       <LivingRoom />
       <Kitchen />

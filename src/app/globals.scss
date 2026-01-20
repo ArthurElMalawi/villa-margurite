@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  --color-primary: #C4D6A4;
+  --color-primary-dark: #46a758;
+
+  --color-secondary: #ADCAB8;
+  --color-secondary-dark: #2c6569;
 }
 
 html {
@@ -51,11 +57,11 @@ h3,
   }
 
   &:nth-child(n) {
-    background-color: #ffeae477;
+    background-color: var(--color-primary);
   }
 
   &:nth-child(2n) {
-    background-color: #ffe7c577;
+    background-color: var(--color-secondary);
   }
 
   h2 {
