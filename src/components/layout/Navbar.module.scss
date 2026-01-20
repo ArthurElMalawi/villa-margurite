@@ -4,7 +4,7 @@
   z-index: 99;
   width: 100%;
   height: 60px;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: space-between;
 
@@ -21,18 +21,12 @@
     cursor: pointer;
     z-index: 1001;
   }
-  .menu {
-    /* … ton menu mobile … */
-  }
-  .menuOpen {
-    /* … */
-  }
 }
 
 /* DESKTOP */
 @media (min-width: $medium-screen-breakpoint) {
   .navbar {
-    /* base style commun (look “pill” translucide, même pour free et stuck) */
+   display: flex;
     width: max-content;
     padding: 0 24px;
     height: 56px;
