@@ -22,33 +22,49 @@ export default function Navbar() {
   const openMenu = () => setOpen((o) => !o);
 
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)"); // ← adapte à $medium-screen-breakpoint
-    if (!mq.matches) return; // mobile/tablette : on ne bascule pas
+    const mq = window.matchMedia("(min-width: 768px)"); // adapte à ton breakpoint
+    if (!mq.matches) return;
 
-    // highlight section (desktop – tu peux garder pour mobile si tu veux)
-    const ids = ["hero", ...sections.map((s) => s.anchor)];
-    const secObs = new IntersectionObserver(
-      (entries) =>
-        entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
-      { threshold: 0.6 }
-    );
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) secObs.observe(el);
-    });
-
-    // sticky toggle: quand le hero sort totalement par le haut → stuck = true
     const hero = document.getElementById("hero");
-    const stickyObs = new IntersectionObserver(
-      ([entry]) => setStuck(entry.boundingClientRect.bottom <= 0),
-      { threshold: 0 }
-    );
-    if (hero) stickyObs.observe(hero);
+    if (!hero) return;
+
+    const computeHeroBottom = () => hero.offsetTop + hero.offsetHeight;
+    let heroBottom = computeHeroBottom();
+
+    const onScroll = () => {
+      setStuck(window.scrollY >= heroBottom);
+    };
+
+    const onResize = () => {
+      heroBottom = computeHeroBottom();
+      onScroll();
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onResize);
+
+    onScroll();
 
     return () => {
-      secObs.disconnect();
-      stickyObs.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onResize);
     };
+  }, []);
+
+  // ton observer active link (optionnel)
+  useEffect(() => {
+    const ids = ["hero", ...sections.map((s) => s.anchor)];
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      { threshold: 0.6 }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
