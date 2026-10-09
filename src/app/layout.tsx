@@ -1,36 +1,33 @@
-import type { Metadata } from "next";
-import { Poppins, MonteCarlo } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Fraunces, Schibsted_Grotesk } from "next/font/google";
 import "./globals.scss";
 
-const poppins = Poppins({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-poppins",
-  preload: false,
+  style: ["normal", "italic"],
+  axes: ["opsz", "SOFT"],
+  variable: "--font-display",
 });
 
-const dancingScript = MonteCarlo({
+const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
-  weight: ["400"],
-  variable: "--font-dancing",
-  preload: true,
+  variable: "--font-body",
 });
 
 export const metadata: Metadata = {
-  title: "Villa Marguerite",
-  description: "Site vitrine de la résidence étudiante",
+  title: "Villa Marguerite · Colocation étudiante à Pontoise",
+  description:
+    "Six chambres meublées dans une maison de caractère avec jardin, au 24 rue Victor Hugo à Pontoise. Visite 3D de la maison en ligne.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#f6f2ea",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr">
-      <body className={`${poppins.variable} ${dancingScript.variable}`}>
-        {children}
-      </body>
+      <body className={`${fraunces.variable} ${grotesk.variable}`}>{children}</body>
     </html>
   );
 }

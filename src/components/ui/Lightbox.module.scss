@@ -1,0 +1,93 @@
+.lightbox {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  border: 0;
+  background: rgba(16, 24, 21, 0.94);
+  color: var(--paper);
+
+  &::backdrop {
+    background: transparent;
+  }
+
+  &[open] {
+    animation: fade 0.3s var(--ease);
+  }
+}
+
+.bar {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px var(--gutter);
+
+  p {
+    font-family: var(--font-display), serif;
+    font-size: 1.25rem;
+  }
+
+  span {
+    margin-left: 10px;
+    font-family: var(--font-body), sans-serif;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+.stage {
+  position: absolute;
+  inset: 72px var(--gutter) 40px;
+}
+
+.photo {
+  object-fit: contain;
+  animation: fade 0.35s var(--ease);
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(246, 242, 234, 0.12);
+  backdrop-filter: blur(6px);
+  transform: translateY(-50%);
+
+  &:hover {
+    background: rgba(246, 242, 234, 0.24);
+  }
+}
+
+.prev {
+  left: 12px;
+}
+
+.next {
+  right: 12px;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}

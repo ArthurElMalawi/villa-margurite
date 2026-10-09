@@ -12,10 +12,11 @@ Il met en avant les différentes pièces de la maison (chambres, salon, cuisine,
 
 ## 🛠️ Stack technique
 
-- **Next.js 15** — Framework principal (React + SSR)
+- **Next.js 16** — Framework principal (React + SSR)
 - **TypeScript** — Typage strict pour un code plus robuste
 - **SCSS Modules** — Gestion des styles par composant
-- **Font Awesome** — Icônes modernes et cohérentes
+- **Lucide** — Icônes
+- **three.js** — Visite 3D de la maison (`public/visite-3d/plan.html`, scène autonome intégrée en iframe)
 - **Web3Forms API** — Formulaire de contact sans backend
 - **ntfy.sh** — Système de notification pour le suivi des déploiements 🚀
 
@@ -34,11 +35,30 @@ Depuis ton smartphone ou ton navigateur, tu recevras les notifications en direct
 
 ## 🧱 Fonctionnalités principales
 - 🎨 Design responsive pensé mobile-first
-- 🖼️ Carrousel d’images dynamique pour les pièces communes
+- 🧊 Visite 3D intégrée : chaque chambre et chaque étage s’ouvre directement dans la maquette
+- 🖼️ Galeries photo en plein écran (chambres et pièces communes)
+- 🗺️ Carte du quartier (OpenStreetMap) avec temps de marche, tracé à pied et lien « trajet en bus »
 - 📩 Formulaire de contact fonctionnel via Web3Forms
 - 🏷️ Suivi de version automatique (le package.json s’incrémente à chaque merge sur main)
 - 🔔 Notifications de build via ntfy
 - 🧭 Navigation sticky avec surlignage automatique de la section active
+
+## 🧊 Visite 3D
+
+La maquette est une page three.js autonome servie depuis `public/visite-3d/plan.html`.
+
+- `?embed` masque son titre (utilisé dans la section « Visite 3D »)
+- `?room=ch3` ouvre directement une pièce, `?theme=light|dark` force le thème
+- Le site la pilote par `postMessage` : `{ type: "vm-3d:focus", room: "ch3" }` ou `{ type: "vm-3d:floor", level: 2 }`
+- Côté React : `showInTour({ room })` / `showInTour({ level })` depuis `components/sections/Tour.tsx`
+
+## 🛠️ Scripts de contenu
+
+| Script | Rôle |
+|---|---|
+| `python scripts/export-photos.py` | Exporte la sélection de photos (`public/assets/photos-all`, non versionné) vers `public/assets/photos` : redimensionnées, sans EXIF/GPS, et vérifie l'absence de doublons |
+| `python scripts/build-plan.py` | Régénère `public/visite-3d/plan.html` depuis l'export du plan 3D (`public/assets/3D-view`, non versionné) |
+| `node scripts/fetch-routes.mjs` | Recalcule les itinéraires piétons de la carte du quartier (`src/data/routes.json`) |
 
 ## 🚀 Déploiement
 

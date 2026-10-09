@@ -1,91 +1,105 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, type FormEvent } from "react";
+import { ArrowRight, Mail, MapPin } from "lucide-react";
+import Reveal from "@/components/ui/Reveal";
+import { ADDRESS, CONTACT_EMAIL, ROOMS } from "@/data/villa";
 import styles from "./Contact.module.scss";
 
+const WEB3FORMS_KEY = "c670c3ea-0310-4df6-8fb7-8987a5bf4cdd";
+
+type Status = { kind: "idle" | "sending" | "ok" | "error"; message?: string };
+
 export default function Contact() {
-  const [result, setResult] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState<Status>({ kind: "idle" });
 
-  const email = "veronique.malawi@gmail.com"
-
-  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const form = event.currentTarget;
-
-    setLoading(true);
-    setResult("");
-
-    const formData = new FormData(form);
-    formData.append("access_key", "c670c3ea-0310-4df6-8fb7-8987a5bf4cdd");
+    const data = new FormData(form);
+    data.append("access_key", WEB3FORMS_KEY);
+    data.append("subject", "Villa Marguerite : nouvelle demande");
+    setStatus({ kind: "sending" });
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-
-      if (data.success) {
-        setResult("✅ Votre message a bien été envoyé !");
-        form.reset();
-      } else {
-        setResult("❌ Une erreur est survenue. Merci de réessayer.");
-        console.error("Erreur Web3Forms :", data);
-      }
+      const res = await fetch("https://api.web3forms.com/submit", { method: "POST", body: data });
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message);
+      form.reset();
+      setStatus({ kind: "ok", message: "Merci ! Votre message est bien parti, on vous répond rapidement." });
     } catch (err) {
-      setResult("❌ Impossible d’envoyer le message. Réessayez plus tard.");
       console.error(err);
-    } finally {
-      setLoading(false);
+      setStatus({ kind: "error", message: `L'envoi n'a pas fonctionné. Réessayez ou écrivez-nous à ${CONTACT_EMAIL}.` });
     }
   };
 
   return (
     <section id="contact" className={`section ${styles.contact}`}>
-      <h2>Contactez-nous</h2>
-        <div className={styles.formContainer}>
-            <p className={styles.intro}>
-                Une question sur la Villa Marguerite ? Un renseignement sur la
-                colocation ? Remplissez le formulaire ci-dessous ou contactez-nous par mail à <a href={`mailto:${email}`}>{email}</a>
-                , nous vous répondrons dans les plus brefs délais.
+      <div className={`container ${styles.grid}`}>
+        <Reveal className={styles.intro}>
+          <p className="eyebrow">Contact</p>
+          <h2 className="display">
+            Envie de <em>venir voir</em> ?
+          </h2>
+          <p>
+            Une question sur une chambre, les disponibilités ou une visite sur place : écrivez-nous, on vous
+            répond directement.
+          </p>
+
+          <ul className={styles.details}>
+            <li>
+              <Mail />
+              <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+            </li>
+            <li>
+              <MapPin />
+              <a href={ADDRESS.mapsUrl} target="_blank" rel="noopener noreferrer">
+                {ADDRESS.street}, {ADDRESS.city}
+              </a>
+            </li>
+          </ul>
+        </Reveal>
+
+        <Reveal className={styles.card} delay={0.1}>
+          <form onSubmit={onSubmit} className={styles.form}>
+            <label className={styles.field}>
+              <span>Nom complet</span>
+              <input type="text" name="name" autoComplete="name" placeholder="Camille Martin" required />
+            </label>
+            <label className={styles.field}>
+              <span>Adresse e-mail</span>
+              <input type="email" name="email" autoComplete="email" placeholder="camille@exemple.fr" required />
+            </label>
+            <label className={`${styles.field} ${styles.full}`}>
+              <span>Chambre qui vous intéresse</span>
+              <select name="chambre" defaultValue="Peu importe">
+                <option>Peu importe</option>
+                {ROOMS.map((r) => (
+                  <option key={r.key}>{r.name}</option>
+                ))}
+              </select>
+            </label>
+            <label className={`${styles.field} ${styles.full}`}>
+              <span>Votre message</span>
+              <textarea
+                name="message"
+                rows={5}
+                placeholder="Bonjour, je cherche une chambre à partir de septembre…"
+                required
+              />
+            </label>
+            <input type="checkbox" name="botcheck" className={styles.honeypot} tabIndex={-1} autoComplete="off" />
+
+            <button type="submit" className={`btn primary ${styles.full}`} disabled={status.kind === "sending"}>
+              {status.kind === "sending" ? "Envoi en cours…" : "Envoyer le message"} <ArrowRight />
+            </button>
+
+            <p className={`${styles.status} ${styles[status.kind]} ${styles.full}`} role="status">
+              {status.message}
             </p>
-
-            <form onSubmit={onSubmit} className={styles.form}>
-                <div className={styles.field}>
-                <label htmlFor="name">Nom complet</label>
-                <input type="text" id="name" name="name" placeholder="Jean Dupont" required />
-                </div>
-
-                <div className={styles.field}>
-                <label htmlFor="email">Adresse e-mail</label>
-                <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="jean.dupont@email.com"
-                    required
-                />
-                </div>
-
-                <div className={styles.field}>
-                <label htmlFor="message">Votre message</label>
-                <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    placeholder="Écrivez votre message ici..."
-                    required
-                ></textarea>
-                </div>
-
-                <button type="submit" disabled={loading}>
-                    {loading ? "Envoi en cours..." : "Envoyer le message"}
-                </button>
-            </form>
-
-            {result && <p className={styles.result}>{result}</p>}
-        </div>
+          </form>
+        </Reveal>
+      </div>
     </section>
   );
 }

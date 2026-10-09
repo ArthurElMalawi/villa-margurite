@@ -1,28 +1,27 @@
-import HeroHeader from "../components/sections/HeroHeader";
-import Rooms from "../components/sections/Rooms";
-import LivingRoom from "../components/sections/LivingRoom";
-import Kitchen from "@/components/sections/Kitchen";
-import Bathroom from "@/components/sections/Bathrooms";
-import Garden from "@/components/sections/Garden";
-import Contact from "@/components/sections/Contact";
+import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Navbar from "@/components/layout/Navbar";
-import styles from "../components/sections/HeroHeader.module.scss";
+import Hero from "@/components/sections/Hero";
+import House from "@/components/sections/House";
+import Rooms from "@/components/sections/Rooms";
+import Spaces from "@/components/sections/Spaces";
+import Neighbourhood from "@/components/sections/Neighbourhood";
+import Tour from "@/components/sections/Tour";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
-    <div>
-      <section id="hero" className={styles.hero}>
-        <HeroHeader />
-        <Navbar />
-      </section>
-      <Rooms />
-      <LivingRoom />
-      <Kitchen />
-      <Bathroom />
-      <Garden />
-      <Contact />
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <House />
+        <Rooms />
+        <Spaces />
+        <Neighbourhood />
+        <Tour />
+        <Contact />
+      </main>
       <Footer />
-    </div>
+    </>
   );
 }
