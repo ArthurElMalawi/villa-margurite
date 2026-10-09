@@ -1,68 +1,75 @@
+@use "../../app/var.scss" as *;
+
 .footer {
-  width: 100%;
-  border-top: 1px solid #e5e5e5;
-  background-color: #fff;
-  color: #555;
-  font-size: 0.9rem;
+  padding-top: 72px;
+  background: var(--sage-deep);
+  color: var(--paper);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 1.5rem 2rem;
+.top {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+  padding-bottom: 48px;
+
+  address {
+    font-style: normal;
+    color: rgba(246, 242, 234, 0.72);
+  }
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 20px);
+  color: var(--brass-soft);
+
+  svg {
+    flex: none;
+    width: clamp(44px, 7vw, 72px);
+    height: auto;
+  }
+
+  p {
+    font-size: clamp(2.6rem, 8vw, 5rem);
+    color: var(--paper);
+
+    em {
+      color: var(--brass-soft);
+    }
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+  gap: 16px;
+  padding-block: 24px;
+  border-top: 1px solid rgba(246, 242, 234, 0.14);
+  font-size: 0.85rem;
+  color: rgba(246, 242, 234, 0.6);
 
-.copy {
-  text-align: center;
-  span {
-    font-weight: 600;
-    color: #000;
+  ul {
+    display: flex;
+    gap: 4px;
+    list-style: none;
   }
-}
-
-.socials {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
 
   a {
-    display: flex;
-    align-items: center;
-    color: #777;
-    transition: color 0.2s ease;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: var(--paper);
+    transition: background 0.2s;
 
     &:hover {
-      color: #000;
-    }
-
-    svg {
-      width: 22px;
-      height: 22px;
-    }
-  }
-}
-
-/* 🌙 Dark mode support (si tu veux l’utiliser plus tard) */
-@media (prefers-color-scheme: dark) {
-  .footer {
-    background-color: #111;
-    border-top: 1px solid #333;
-    color: #ccc;
-  }
-
-  .copy span {
-    color: #fff;
-  }
-
-  .socials a {
-    color: #aaa;
-    &:hover {
-      color: #fff;
+      background: rgba(246, 242, 234, 0.1);
     }
   }
 }

@@ -1,44 +1,128 @@
 @use "../../app/var.scss" as *;
 
 .rooms {
-  .roomsContainer {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 30px;
-    align-items: stretch;
-    justify-content: center;
-    min-height: max-content;
+  background: var(--paper-2);
+}
 
-    @media screen and (min-width: $medium-screen-breakpoint) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+.grid {
+  display: grid;
+  gap: 40px 24px;
+  list-style: none;
 
-    @media screen and (min-width: $large-screen-breakpoint) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+  @include md {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    .room {
-      position: relative;
-      width: 100%;
-      max-width: 420px;
-      aspect-ratio: 4 / 3;
-      overflow: hidden;
-      border-radius: 8px;
-      margin: 0 auto;
+  @include lg {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px 28px;
+  }
+}
 
-      &:hover img {
-        transform: scale(1.1);
-      }
+.card {
+  display: grid;
+  gap: 18px;
+}
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 50% 50%;
-        transform: scale(1);
-        transition: transform 0.25s ease;
-        display: block;
-      }
-    }
+.photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--sage-mist);
+
+  img {
+    object-fit: cover;
+    transition: transform 1.2s var(--ease);
+  }
+
+  .card:hover & img {
+    transform: scale(1.05);
+  }
+}
+
+.count {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(246, 242, 234, 0.92);
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  svg {
+    width: 15px;
+  }
+}
+
+.number {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(246, 242, 234, 0.9);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.info {
+  display: grid;
+  gap: 6px;
+}
+
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+
+  h3 {
+    font-family: var(--font-display), serif;
+    font-weight: 400;
+    font-size: 1.7rem;
+    letter-spacing: -0.01em;
+  }
+}
+
+.area {
+  font-family: var(--font-display), serif;
+  font-size: 1.25rem;
+  color: var(--sage);
+
+  small {
+    font-size: 0.85rem;
+  }
+}
+
+.meta {
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+.tourBtn {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 6px 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--sage);
+  border-bottom: 1px solid currentColor;
+  transition: color 0.2s;
+
+  svg {
+    width: 16px;
+  }
+
+  &:hover {
+    color: var(--brass);
   }
 }

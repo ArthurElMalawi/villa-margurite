@@ -1,0 +1,141 @@
+@use "../../app/var.scss" as *;
+
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  transition:
+    background 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.solid {
+  background: rgba(246, 242, 234, 0.86);
+  backdrop-filter: blur(14px) saturate(1.2);
+  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  box-shadow: 0 1px 0 var(--line);
+}
+
+/* pas de backdrop-filter ici : il ferait du header le repère du menu en position fixed */
+.menuOpen {
+  background: var(--paper);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.brand {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--sage);
+
+  span {
+    font-family: var(--font-display), serif;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+  }
+
+  em {
+    color: var(--sage);
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+
+  ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+
+  ul a {
+    position: relative;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    transition: color 0.2s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 1px;
+      background: var(--brass);
+      transform: scaleX(0);
+      transition: transform 0.3s var(--ease);
+    }
+
+    &:hover,
+    &.active {
+      color: var(--ink);
+    }
+
+    &.active::after {
+      transform: scaleX(1);
+    }
+  }
+
+  @media (max-width: 899px) {
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 0 var(--gutter);
+    background: var(--paper);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s var(--ease),
+      visibility 0.3s;
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    ul a {
+      font-family: var(--font-display), serif;
+      font-size: 2.4rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+  }
+}
+
+.burger {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+
+  @media (min-width: 900px) {
+    display: none;
+  }
+}
+
+.cta {
+  min-height: 42px;
+}

@@ -1,0 +1,181 @@
+@use "../../app/var.scss" as *;
+
+.hero {
+  padding-top: 104px;
+
+  @include lg {
+    padding-top: 128px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 48px;
+
+  @include lg {
+    grid-template-columns: 1.05fr 1fr;
+    align-items: center;
+    gap: 64px;
+  }
+}
+
+.copy {
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+}
+
+.title {
+  font-size: clamp(3.6rem, 12vw, 8.5rem);
+  line-height: 0.92;
+
+  em {
+    display: block;
+  }
+}
+
+.lead {
+  max-width: 34ch;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+
+  strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* entrée en cascade au chargement */
+.in {
+  animation: rise 1s var(--ease) both;
+
+  @for $i from 1 through 4 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{0.08 + $i * 0.09}s;
+    }
+  }
+}
+
+.media {
+  position: relative;
+  animation: rise 1.2s 0.2s var(--ease) both;
+}
+
+/* forme en arc, comme les fenêtres cintrées de la maison */
+.arch {
+  position: relative;
+  aspect-ratio: 4 / 4.6;
+  overflow: hidden;
+  border-radius: var(--arch);
+  background: var(--sage-mist);
+
+  img {
+    object-fit: cover;
+    animation: zoom 2.4s var(--ease) both;
+  }
+
+  @include lg {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+.address {
+  position: absolute;
+  left: -12px;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: var(--radius);
+  background: var(--card);
+  box-shadow: 0 18px 40px -22px rgba(20, 30, 27, 0.5);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.3s var(--ease);
+
+  svg {
+    flex: none;
+    width: 20px;
+    color: var(--brass);
+  }
+
+  small {
+    display: block;
+    font-weight: 400;
+    color: var(--ink-soft);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+
+  @include lg {
+    left: -40px;
+  }
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+
+  div {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--line);
+
+    &:nth-child(odd) {
+      padding-right: 16px;
+    }
+  }
+
+  dt {
+    font-family: var(--font-display), serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    line-height: 1.1;
+  }
+
+  dd {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  @include lg {
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 88px;
+
+    div {
+      padding: 28px 24px;
+      border-bottom: 0;
+
+      & + div {
+        border-left: 1px solid var(--line);
+      }
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1.08);
+  }
+}

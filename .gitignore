@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# sources lourdes, non déployées :
+# - photos originales → sélection optimisée dans public/assets/photos (scripts/export-photos.py)
+# - export brut du plan 3D → version servie dans public/visite-3d/plan.html (scripts/build-plan.py)
+/public/assets/photos-all/
+/public/assets/3D-view/
+
+# python
+__pycache__/

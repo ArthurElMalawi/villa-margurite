@@ -1,88 +1,149 @@
 @use "../../app/var.scss" as *;
-@use 'sass:color';
 
 .contact {
-    .formContainer {
-        max-width: 700px;
-        margin: 0 auto;
-        text-align: center;
+  background: var(--paper-2);
+}
 
-        .intro {
-            color: #444;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 2rem;
+.grid {
+  display: grid;
+  gap: 48px;
 
-            a {
-                text-decoration: underline;
-            }
-        }
+  @include lg {
+    grid-template-columns: 1fr 1.1fr;
+    gap: 96px;
+  }
+}
 
-        .form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+.intro {
+  display: grid;
+  gap: 22px;
+  align-content: start;
 
-            .field {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
+  h2 {
+    font-size: clamp(2.4rem, 6vw, 4.4rem);
+  }
 
-            label {
-                font-weight: 500;
-                margin-bottom: 0.4rem;
-                color: #333;
-            }
+  > p:not(:global(.eyebrow)) {
+    max-width: 40ch;
+    color: var(--ink-soft);
+  }
+}
 
-            input,
-            textarea {
-                padding: 0.75rem 1rem;
-                border: 1px solid #ccc;
-                border-radius: 8px;
-                font-size: 1rem;
-                transition: border-color 0.2s ease, box-shadow 0.2s ease;
+.details {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+  list-style: none;
 
-                &:focus {
-                outline: none;
-                border-color: #388e4a;
-                box-shadow: 0 0 0 3px rgba(178, 150, 91, 0.2);
-                }
-            }
+  li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-            textarea {
-                resize: vertical;
-                min-height: 120px;
-            }
-            }
+  svg {
+    flex: none;
+    width: 20px;
+    color: var(--brass);
+  }
 
-            button {
-            background-color: var(--color-primary-dark);
-            color: white;
-            border: none;
-            padding: 0.9rem 1.5rem;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            width: fit-content;
-            align-self: center;
+  a {
+    border-bottom: 1px solid var(--line);
+    transition: border-color 0.2s;
+    overflow-wrap: anywhere;
 
-            &:hover {
-                background-color: color.adjust(#388e4a, $lightness:8%);
-                transform: translateY(-1px);
-            }
-
-            &:disabled {
-                opacity: 0.6;
-                cursor: not-allowed;
-            }
-            }
-        }
-
-        .result {
-            margin-top: 1.5rem;
-            font-weight: 500;
-            color: #444;
-        }
+    &:hover {
+      border-color: var(--ink);
     }
+  }
+}
+
+.card {
+  padding: 24px;
+  border-radius: 20px;
+  background: var(--card);
+  box-shadow: 0 30px 60px -40px rgba(20, 30, 27, 0.45);
+
+  @include md {
+    padding: 40px;
+  }
+}
+
+.form {
+  display: grid;
+  gap: 18px;
+
+  @include md {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+
+  span {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 13px 14px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--paper);
+    font: inherit;
+    color: inherit;
+    transition:
+      border-color 0.2s,
+      box-shadow 0.2s;
+
+    &:focus {
+      outline: none;
+      border-color: var(--sage);
+      box-shadow: 0 0 0 3px rgba(46, 81, 69, 0.15);
+    }
+
+    &::placeholder {
+      color: #8d978f;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+.honeypot {
+  display: none;
+}
+
+.status {
+  min-height: 1.5em;
+  font-size: 0.92rem;
+}
+
+.ok {
+  color: var(--sage);
+}
+
+.error {
+  color: #9a3b2b;
+}
+
+.idle,
+.sending {
+  color: var(--ink-soft);
+}
+
+.form button[disabled] {
+  opacity: 0.6;
+  cursor: progress;
 }

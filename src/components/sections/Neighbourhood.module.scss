@@ -1,0 +1,262 @@
+@use "../../app/var.scss" as *;
+
+.neighbourhood {
+  background: var(--paper-2);
+}
+
+.layout {
+  display: grid;
+  gap: 24px;
+
+  @include lg {
+    grid-template-columns: 1.6fr 1fr;
+    gap: 40px;
+    align-items: stretch;
+  }
+}
+
+.mapWrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  background: var(--sage-mist);
+  box-shadow: 0 30px 60px -40px rgba(20, 30, 27, 0.45);
+
+  /* une colonne : la carte reste visible sous le menu pendant qu'on parcourt la liste */
+  @media (max-width: #{$large-screen-breakpoint - 1px}) {
+    position: sticky;
+    top: 84px;
+    z-index: 2;
+    /* bande pleine au-dessus pour masquer la liste qui défile entre le menu et la carte */
+    box-shadow:
+      0 -14px 0 0 var(--paper-2),
+      0 18px 30px -18px rgba(20, 30, 27, 0.55);
+  }
+}
+
+.map {
+  height: 420px;
+
+  @media (max-width: #{$large-screen-breakpoint - 1px}) {
+    height: min(420px, 42svh);
+  }
+  font-family: var(--font-body), sans-serif;
+  background: var(--sage-mist);
+
+  @include lg {
+    height: 100%;
+    min-height: 560px;
+  }
+
+  :global(.leaflet-control-zoom) {
+    border: 0;
+    box-shadow: 0 8px 20px -10px rgba(20, 30, 27, 0.5);
+
+    a {
+      color: var(--ink);
+    }
+  }
+
+  :global(.leaflet-control-attribution) {
+    background: rgba(246, 242, 234, 0.85);
+    font-size: 10px;
+  }
+}
+
+/* fond OSM adouci pour coller à la palette */
+.tiles {
+  filter: grayscale(0.55) sepia(0.18) brightness(1.04) contrast(0.92);
+}
+
+/* ---------- repères ---------- */
+
+.homePin {
+  span {
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: var(--sage);
+    color: var(--paper);
+    font-family: var(--font-display), serif;
+    font-size: 15px;
+    box-shadow: 0 10px 22px -8px rgba(20, 30, 27, 0.6);
+
+    /* pointe */
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      width: 12px;
+      height: 12px;
+      background: var(--sage);
+      transform: translateX(-50%) rotate(45deg);
+    }
+  }
+}
+
+.pin {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--paper);
+  color: var(--paper);
+  font-size: 13px;
+  box-shadow: 0 6px 14px -6px rgba(20, 30, 27, 0.7);
+  transition: transform 0.2s var(--ease);
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
+
+.transport {
+  background: #2f5d7c;
+}
+
+.etudes {
+  background: #7a4f8a;
+}
+
+.courses {
+  background: var(--brass);
+}
+
+.sante {
+  background: #9a3b2b;
+}
+
+.ville {
+  background: var(--sage);
+}
+
+.tip {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 10px 22px -10px rgba(0, 0, 0, 0.6);
+
+  &::before {
+    border-top-color: var(--ink);
+  }
+}
+
+.route {
+  stroke: var(--sage);
+  stroke-dasharray: 1 10;
+  animation: draw 1.2s var(--ease) both;
+}
+
+@keyframes draw {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- liste ---------- */
+
+.list {
+  display: grid;
+  align-content: start;
+  list-style: none;
+  border-top: 1px solid var(--line);
+
+  button {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 14px 8px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s;
+
+    &:hover,
+    &.on {
+      background: var(--card);
+    }
+
+    &.on {
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.go {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px 8px 16px 50px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+
+  :global(.btn) {
+    min-height: 38px;
+    padding: 0 16px;
+    font-size: 0.85rem;
+  }
+}
+
+.num {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--paper);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.what {
+  display: grid;
+
+  strong {
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  small {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+
+  svg {
+    width: 13px;
+    flex: none;
+  }
+}
+
+.walk {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--font-display), serif;
+  font-size: 1.1rem;
+  white-space: nowrap;
+  color: var(--sage);
+
+  svg {
+    width: 15px;
+    color: var(--brass);
+  }
+}
+
+.note {
+  margin-top: 16px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
