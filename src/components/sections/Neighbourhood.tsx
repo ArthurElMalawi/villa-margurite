@@ -8,7 +8,6 @@ import {
   GraduationCap,
   Landmark,
   ShoppingBasket,
-  Stethoscope,
   TrainFront,
 } from "lucide-react";
 import Reveal from "@/components/ui/Reveal";
@@ -21,7 +20,6 @@ const KINDS: Record<PlaceKind, { label: string; Icon: typeof TrainFront }> = {
   transport: { label: "Transports", Icon: TrainFront },
   etudes: { label: "Études", Icon: GraduationCap },
   courses: { label: "Courses", Icon: ShoppingBasket },
-  sante: { label: "Santé", Icon: Stethoscope },
   ville: { label: "En ville", Icon: Landmark },
 };
 

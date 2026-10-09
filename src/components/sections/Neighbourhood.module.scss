@@ -17,6 +17,8 @@
 
 .mapWrap {
   position: relative;
+  /* les calques Leaflet ont des z-index de 400 à 1000 : on les garde sous le menu fixe */
+  isolation: isolate;
   overflow: hidden;
   border-radius: 20px;
   background: var(--sage-mist);
@@ -124,10 +126,6 @@
 
 .courses {
   background: var(--brass);
-}
-
-.sante {
-  background: #9a3b2b;
 }
 
 .ville {

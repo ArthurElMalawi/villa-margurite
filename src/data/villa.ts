@@ -7,7 +7,7 @@ export const ADDRESS = {
   coords: [49.054122, 2.102067] as [number, number],
 };
 
-export type PlaceKind = "transport" | "etudes" | "courses" | "sante" | "ville";
+export type PlaceKind = "transport" | "etudes" | "courses" | "ville";
 
 export type Place = {
   name: string;
@@ -21,7 +21,6 @@ export type Place = {
 // Lieux et coordonnées issus d'OpenStreetMap (octobre 2026)
 export const PLACES: Place[] = [
   { name: "Arrêt Cité Judiciaire", kind: "transport", detail: "Plusieurs lignes de bus", coords: [49.051532, 2.099357], walk: 5 },
-  { name: "Pharmacie Siou", kind: "sante", detail: "Pharmacie", coords: [49.050389, 2.100316], walk: 6 },
   { name: "Boulangerie du Grand Martroy", kind: "courses", detail: "Boulangerie", coords: [49.051016, 2.098049], walk: 7 },
   { name: "Cathédrale Saint-Maclou", kind: "ville", detail: "Centre historique et commerces", coords: [49.050581, 2.097189], walk: 8 },
   { name: "Lidl", kind: "courses", detail: "Supermarché", coords: [49.054554, 2.094193], walk: 13 },
